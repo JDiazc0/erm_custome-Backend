@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import materialRouter from "./routes/materials.routes.js";
 import productRouter from "./routes/products.routes.js";
 import clientRouter from "./routes/client.routes.js";
@@ -9,6 +10,7 @@ import balanceRouter from "./routes/balance.routes.js";
 
 const app = express();
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
