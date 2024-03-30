@@ -2,7 +2,7 @@ import Products from "../models/products.model.js";
 
 export const getProducts = async (req, res) => {
   try {
-    const products = await Products.find().populate("materials._id");
+    const products = await Products.find().populate("materials");
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: "Products error" });
