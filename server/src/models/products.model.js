@@ -13,7 +13,7 @@ const productsSchema = new mongoose.Schema({
   },
   materials: [
     {
-      materials: {
+      material: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Raw_Material",
       },
