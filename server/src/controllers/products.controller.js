@@ -2,7 +2,7 @@ import Products from "../models/products.model.js";
 
 export const getProducts = async (req, res) => {
   try {
-    const products = await Products.find().populate("materials");
+    const products = await Products.find().populate("materials.material");
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: "Products error" });
@@ -24,14 +24,13 @@ export const createProduct = async (req, res) => {
   const { name, price, materials } = req.body;
 
   try {
-    const newProduct = await new Products({
+    const newProduct = await Products.create({
       name,
       price,
       materials,
     });
 
-    const savedProduct = newProduct.save();
-    res.json(savedProduct);
+    res.json(newProduct);
   } catch (error) {
     res.status(500).json({ error: "Products error" });
   }

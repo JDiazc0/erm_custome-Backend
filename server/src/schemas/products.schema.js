@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const materialValidator = z.object({
-  id: z.string(),
+  material: z.string(),
   quantity: z.number().min(1, "quantity must be greater than zero"),
 });
 

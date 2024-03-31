@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+const materialsSchema = new mongoose.Schema({
+  material: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Raw_Material",
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+});
+
 const productsSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -11,18 +22,7 @@ const productsSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  materials: [
-    {
-      material: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Raw_Material",
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-    },
-  ],
+  materials: [materialsSchema],
 });
 
 export default mongoose.model("Product", productsSchema);
