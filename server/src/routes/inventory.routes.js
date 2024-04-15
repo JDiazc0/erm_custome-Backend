@@ -18,7 +18,7 @@ router.post(
   validateSchema(createInventorySchema),
   createInventory
 );
-router.delete("/inventory", deleteInventory);
+router.delete("/inventory/:id", deleteInventory);
 router.put("/inventory", updateInventory);
 
 export default router;
