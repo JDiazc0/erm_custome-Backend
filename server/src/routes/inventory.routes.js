@@ -19,6 +19,6 @@ router.post(
   createInventory
 );
 router.delete("/inventory/:id", deleteInventory);
-router.put("/inventory", updateInventory);
+router.put("/inventory/:id", updateInventory);
 
 export default router;
