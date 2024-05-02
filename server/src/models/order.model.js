@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import moment from "moment-timezone";
 
 const productSchema = new mongoose.Schema({
   product: {
@@ -23,7 +24,7 @@ const orderSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    default: Date.now,
+    default: () => moment().tz("America/Bogota").toDate(),
   },
 });
 
