@@ -15,6 +15,6 @@ router.get("/order", getOrders);
 router.get("/order/:id", getOrder);
 router.post("/order", validateSchema(createOrderSchema), createOrder);
 router.delete("/order/:id", deleteOrder);
-router.put("/order", updateOrder);
+router.put("/order/:id", updateOrder); 
 
 export default router;
