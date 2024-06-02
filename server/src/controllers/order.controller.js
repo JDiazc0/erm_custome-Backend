@@ -11,13 +11,23 @@ export const getOrders = async (req, res) => {
 
 export const getOrder = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.id).populate("client").populate("products.product");
+    const order = await Order.findById(req.params.id)
+      .populate("client")
+      .populate({
+        path: "products.product",
+        populate: {
+          path: "materials.material",
+          model: "Raw_Material"  
+        },
+      });
+
     if (!order) return res.status(404).json({ message: "Order not found" });
-    res.json(order); 
+    res.json(order);
   } catch (error) {
     res.status(500).json({ error: "Orders error" });
   }
 };
+
 
 export const createOrder = async (req, res) => {
   const { client, products, price } = req.body;
