@@ -34,3 +34,19 @@ export const createBalance = async (req, res) => {
     res.status(500).json({ error: "Balance error" });
   }
 };
+
+export const updateBalance = async (req, res) => {
+  const { id } = req.params;
+  const { month, income, expenses } = req.body;
+  try {
+    const updatedBalance = await Balance.findByIdAndUpdate(
+      id,
+      { month, income, expenses },
+      { new: true }
+    );
+    if (!updatedBalance) return res.status(404).json({ message: "Balance not found" });
+    res.json(updatedBalance);
+  } catch (error) {
+    res.status(500).json({ error: "Balance update error" });
+  }
+};
