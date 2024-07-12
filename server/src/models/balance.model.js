@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 const balanceSchema = new mongoose.Schema({
   month: {
-    type: Date,
-    required: true,
+    type: String,
   },
   income: {
     type: Number,
