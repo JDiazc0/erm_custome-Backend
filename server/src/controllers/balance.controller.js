@@ -22,18 +22,19 @@ export const createBalance = async (req, res) => {
   const { month, income, expenses } = req.body;
 
   try {
-    const newBalance = await new Products({
+    const newBalance = new Balance({
       month,
       income,
       expenses,
     });
 
-    const savedBalance = newBalance.save();
+    const savedBalance = await newBalance.save(); 
     res.json(savedBalance);
   } catch (error) {
     res.status(500).json({ error: "Balance error" });
   }
 };
+
 
 export const updateBalance = async (req, res) => {
   const { id } = req.params;
