@@ -11,7 +11,7 @@ import balanceRouter from "./routes/balance.routes.js";
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://mrdogkat.netlify.app/'],
     credentials: true
   }));  
 app.use(morgan("dev"));
